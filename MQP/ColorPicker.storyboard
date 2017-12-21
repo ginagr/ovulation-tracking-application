@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Color Picker View Controller-->
+        <scene sceneID="gFq-0C-0XI">
+            <objects>
+                <viewController restorationIdentifier="sbColorPicker" storyboardIdentifier="sbColorPicker" id="0uo-z1-cZD" customClass="ColorPickerViewController" customModule="MQP" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="sbColorPicker" id="RCU-r4-hmH">
+                        <rect key="frame" x="0.0" y="0.0" width="273" height="431"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Cu5-Fg-EG3">
+                                <rect key="frame" x="8" y="8" width="257" height="415"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="61U-xy-hey">
+                                    <size key="itemSize" width="24" height="24"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ColorCell" id="HUg-aX-ypi">
+                                        <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <accessibility key="accessibilityConfiguration" identifier="sbColorPicker"/>
+                        <constraints>
+                            <constraint firstItem="a22-Oo-Lxm" firstAttribute="bottom" secondItem="Cu5-Fg-EG3" secondAttribute="bottom" constant="8" id="OEA-ic-GYf"/>
+                            <constraint firstItem="Cu5-Fg-EG3" firstAttribute="leading" secondItem="a22-Oo-Lxm" secondAttribute="leading" constant="8" id="SDk-Rz-iKZ"/>
+                            <constraint firstItem="a22-Oo-Lxm" firstAttribute="trailing" secondItem="Cu5-Fg-EG3" secondAttribute="trailing" constant="8" id="rZf-YL-oQ4"/>
+                            <constraint firstItem="Cu5-Fg-EG3" firstAttribute="top" secondItem="a22-Oo-Lxm" secondAttribute="top" constant="8" id="yrU-4D-PKa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="a22-Oo-Lxm"/>
+                    </view>
+                    <size key="freeformSize" width="273" height="431"/>
+                    <connections>
+                        <outlet property="colorCollectionView" destination="Cu5-Fg-EG3" id="VjU-KG-BGK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W87-Qv-tfi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="112.8" y="139.880059970015"/>
+        </scene>
+    </scenes>
+</document>

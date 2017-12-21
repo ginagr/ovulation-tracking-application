@@ -17,6 +17,9 @@
 		3329419A1FEB9ACD0022B196 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332941991FEB9ACC0022B196 /* SettingsController.swift */; };
 		3329419C1FEB9ADD0022B196 /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3329419B1FEB9ADC0022B196 /* CalendarController.swift */; };
 		3329419E1FEB9AEC0022B196 /* AlertsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3329419D1FEB9AEC0022B196 /* AlertsController.swift */; };
+		332941A01FEC5C020022B196 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3329419F1FEC5C020022B196 /* ColorPickerViewController.swift */; };
+		33EBE4D01FEC6AA1001D18AD /* Colors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 33EBE4CF1FEC6AA1001D18AD /* Colors.plist */; };
+		33EBE4D21FEC7566001D18AD /* MasterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EBE4D11FEC7566001D18AD /* MasterController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		332941991FEB9ACC0022B196 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		3329419B1FEB9ADC0022B196 /* CalendarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarController.swift; sourceTree = "<group>"; };
 		3329419D1FEB9AEC0022B196 /* AlertsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsController.swift; sourceTree = "<group>"; };
+		3329419F1FEC5C020022B196 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
+		33EBE4CF1FEC6AA1001D18AD /* Colors.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Colors.plist; sourceTree = "<group>"; };
+		33EBE4D11FEC7566001D18AD /* MasterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,15 +92,18 @@
 			isa = PBXGroup;
 			children = (
 				332941771FEB88E30022B196 /* AppDelegate.swift */,
-				332941791FEB88E30022B196 /* MainController.swift */,
 				3329417B1FEB88E30022B196 /* Main.storyboard */,
 				3329417E1FEB88E30022B196 /* Assets.xcassets */,
 				332941801FEB88E30022B196 /* LaunchScreen.storyboard */,
 				332941831FEB88E30022B196 /* Info.plist */,
+				33EBE4CF1FEC6AA1001D18AD /* Colors.plist */,
+				332941791FEB88E30022B196 /* MainController.swift */,
 				332941971FEB9ABF0022B196 /* SymptomsController.swift */,
 				332941991FEB9ACC0022B196 /* SettingsController.swift */,
 				3329419B1FEB9ADC0022B196 /* CalendarController.swift */,
 				3329419D1FEB9AEC0022B196 /* AlertsController.swift */,
+				3329419F1FEC5C020022B196 /* ColorPickerViewController.swift */,
+				33EBE4D11FEC7566001D18AD /* MasterController.swift */,
 			);
 			path = MQP;
 			sourceTree = "<group>";
@@ -193,6 +202,7 @@
 			files = (
 				332941821FEB88E30022B196 /* LaunchScreen.storyboard in Resources */,
 				3329417F1FEB88E30022B196 /* Assets.xcassets in Resources */,
+				33EBE4D01FEC6AA1001D18AD /* Colors.plist in Resources */,
 				3329417D1FEB88E30022B196 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,8 +222,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3329419A1FEB9ACD0022B196 /* SettingsController.swift in Sources */,
+				33EBE4D21FEC7566001D18AD /* MasterController.swift in Sources */,
 				3329417A1FEB88E30022B196 /* MainController.swift in Sources */,
 				3329419C1FEB9ADD0022B196 /* CalendarController.swift in Sources */,
+				332941A01FEC5C020022B196 /* ColorPickerViewController.swift in Sources */,
 				332941781FEB88E30022B196 /* AppDelegate.swift in Sources */,
 				3329419E1FEB9AEC0022B196 /* AlertsController.swift in Sources */,
 				332941981FEB9ABF0022B196 /* SymptomsController.swift in Sources */,
