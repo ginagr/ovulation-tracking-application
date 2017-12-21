@@ -8,11 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		332941781FEB88E30022B196 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332941771FEB88E30022B196 /* AppDelegate.swift */; };
-		3329417A1FEB88E30022B196 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332941791FEB88E30022B196 /* ViewController.swift */; };
+		3329417A1FEB88E30022B196 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332941791FEB88E30022B196 /* MainController.swift */; };
 		3329417D1FEB88E30022B196 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3329417B1FEB88E30022B196 /* Main.storyboard */; };
 		3329417F1FEB88E30022B196 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3329417E1FEB88E30022B196 /* Assets.xcassets */; };
 		332941821FEB88E30022B196 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 332941801FEB88E30022B196 /* LaunchScreen.storyboard */; };
 		3329418D1FEB88E30022B196 /* MQPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3329418C1FEB88E30022B196 /* MQPTests.swift */; };
+		332941981FEB9ABF0022B196 /* SymptomsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332941971FEB9ABF0022B196 /* SymptomsController.swift */; };
+		3329419A1FEB9ACD0022B196 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332941991FEB9ACC0022B196 /* SettingsController.swift */; };
+		3329419C1FEB9ADD0022B196 /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3329419B1FEB9ADC0022B196 /* CalendarController.swift */; };
+		3329419E1FEB9AEC0022B196 /* AlertsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3329419D1FEB9AEC0022B196 /* AlertsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +32,7 @@
 /* Begin PBXFileReference section */
 		332941741FEB88E30022B196 /* MQP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MQP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		332941771FEB88E30022B196 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		332941791FEB88E30022B196 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		332941791FEB88E30022B196 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		3329417C1FEB88E30022B196 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3329417E1FEB88E30022B196 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		332941811FEB88E30022B196 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +40,10 @@
 		332941881FEB88E30022B196 /* MQPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MQPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3329418C1FEB88E30022B196 /* MQPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQPTests.swift; sourceTree = "<group>"; };
 		3329418E1FEB88E30022B196 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		332941971FEB9ABF0022B196 /* SymptomsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsController.swift; sourceTree = "<group>"; };
+		332941991FEB9ACC0022B196 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		3329419B1FEB9ADC0022B196 /* CalendarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarController.swift; sourceTree = "<group>"; };
+		3329419D1FEB9AEC0022B196 /* AlertsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,11 +86,15 @@
 			isa = PBXGroup;
 			children = (
 				332941771FEB88E30022B196 /* AppDelegate.swift */,
-				332941791FEB88E30022B196 /* ViewController.swift */,
+				332941791FEB88E30022B196 /* MainController.swift */,
 				3329417B1FEB88E30022B196 /* Main.storyboard */,
 				3329417E1FEB88E30022B196 /* Assets.xcassets */,
 				332941801FEB88E30022B196 /* LaunchScreen.storyboard */,
 				332941831FEB88E30022B196 /* Info.plist */,
+				332941971FEB9ABF0022B196 /* SymptomsController.swift */,
+				332941991FEB9ACC0022B196 /* SettingsController.swift */,
+				3329419B1FEB9ADC0022B196 /* CalendarController.swift */,
+				3329419D1FEB9AEC0022B196 /* AlertsController.swift */,
 			);
 			path = MQP;
 			sourceTree = "<group>";
@@ -199,8 +211,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3329417A1FEB88E30022B196 /* ViewController.swift in Sources */,
+				3329419A1FEB9ACD0022B196 /* SettingsController.swift in Sources */,
+				3329417A1FEB88E30022B196 /* MainController.swift in Sources */,
+				3329419C1FEB9ADD0022B196 /* CalendarController.swift in Sources */,
 				332941781FEB88E30022B196 /* AppDelegate.swift in Sources */,
+				3329419E1FEB9AEC0022B196 /* AlertsController.swift in Sources */,
+				332941981FEB9ABF0022B196 /* SymptomsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

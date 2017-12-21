@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Calendar Controller-->
         <scene sceneID="oSn-25-BY1">
             <objects>
-                <viewController id="vj0-7m-8b7" sceneMemberID="viewController">
+                <viewController id="vj0-7m-8b7" customClass="CalendarController" customModule="MQP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Swd-r9-GEl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,12 +42,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="69y-l6-QHi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-823" y="134"/>
+            <point key="canvasLocation" x="-838" y="134"/>
         </scene>
-        <!--View Controller-->
+        <!--Symptoms Controller-->
         <scene sceneID="B9B-1j-HaT">
             <objects>
-                <viewController id="Swh-Fo-VBg" sceneMemberID="viewController">
+                <viewController id="Swh-Fo-VBg" customClass="SymptomsController" customModule="MQP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1dZ-oK-Kcm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -69,6 +69,16 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="dVv-yo-3mp"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9DM-3W-IeA">
+                                <rect key="frame" x="248" y="20" width="111" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.88501348349999998" green="0.88501348349999998" blue="0.88501348349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="SAVE"/>
+                                <connections>
+                                    <action selector="saveSymptoms" destination="Swh-Fo-VBg" eventType="touchUpInside" id="Ash-1a-3Iz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="KSe-ES-fSC"/>
@@ -76,12 +86,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kUk-pf-5eO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137" y="-627"/>
+            <point key="canvasLocation" x="136.80000000000001" y="-627.4362818590705"/>
         </scene>
-        <!--View Controller-->
+        <!--Main Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MQP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainController" id="BYZ-38-t0r" customClass="MainController" customModule="MQP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -140,11 +150,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="137" y="134"/>
         </scene>
-        <!--View Controller-->
+        <!--Alerts Controller-->
         <scene sceneID="eqv-fq-qZb">
             <objects>
-                <viewController id="ELX-ca-agW" sceneMemberID="viewController">
+                <viewController id="ELX-ca-agW" customClass="AlertsController" customModule="MQP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xkR-87-GjC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -175,10 +186,10 @@
             </objects>
             <point key="canvasLocation" x="137" y="862"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings Controller-->
         <scene sceneID="5qE-1J-YGc">
             <objects>
-                <viewController id="LZO-KG-yuD" sceneMemberID="viewController">
+                <viewController id="LZO-KG-yuD" customClass="SettingsController" customModule="MQP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bu0-Nc-PSs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -200,6 +211,16 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="4e9-C3-LDu"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q4h-0Z-fQx">
+                                <rect key="frame" x="248" y="20" width="111" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.88501348349999998" green="0.88501348349999998" blue="0.88501348349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="SAVE"/>
+                                <connections>
+                                    <action selector="saveSettings" destination="LZO-KG-yuD" eventType="touchUpInside" id="t9I-sC-Zid"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="KJr-22-hTw"/>
@@ -211,6 +232,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0Ya-3O-JRK"/>
+        <segue reference="4e9-C3-LDu"/>
     </inferredMetricsTieBreakers>
 </document>
