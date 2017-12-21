@@ -1,0 +1,5 @@
+osx_image: xcode9.2
+os: osx
+language: swift
+xcode_project: MQP.xcodeproj 
+xcode_scheme: MQP
