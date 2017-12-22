@@ -231,7 +231,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WbF-Pe-7Ee">
                                 <rect key="frame" x="248" y="138" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" identifier="backgroundB"/>
+                                <accessibility key="accessibilityConfiguration" hint="theme" identifier="backgroundB"/>
                                 <connections>
                                     <action selector="changeColorButtonClicked:" destination="LZO-KG-yuD" eventType="touchUpInside" id="itd-pI-nqx"/>
                                 </connections>
@@ -239,7 +239,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YzT-Mh-pTt">
                                 <rect key="frame" x="248" y="186" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" identifier="secondaryB"/>
+                                <accessibility key="accessibilityConfiguration" hint="theme" identifier="secondaryB"/>
                                 <connections>
                                     <action selector="changeColorButtonClicked:" destination="LZO-KG-yuD" eventType="touchUpInside" id="R4J-9z-6Hx"/>
                                 </connections>
@@ -247,7 +247,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SqB-u7-ryt">
                                 <rect key="frame" x="248" y="234" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" identifier="textB"/>
+                                <accessibility key="accessibilityConfiguration" hint="theme" identifier="textB"/>
                                 <connections>
                                     <action selector="changeColorButtonClicked:" destination="LZO-KG-yuD" eventType="touchUpInside" id="NSm-Rq-0zk"/>
                                 </connections>

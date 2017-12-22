@@ -12,9 +12,9 @@ class MainController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = PersonalTheme.background
-        view.t
-        // Do any additional setup after loading the view, typically from a nib.
+        PersonalTheme.loadTheme()
+        setupTheme(currView: self)
+        
     }
 
     override func didReceiveMemoryWarning() {

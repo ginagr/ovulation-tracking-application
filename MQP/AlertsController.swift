@@ -12,8 +12,8 @@ class AlertsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = PersonalTheme.background
-        // Do any additional setup after loading the view, typically from a nib.
+        PersonalTheme.loadTheme()
+        setupTheme(currView: self)
     }
     
     override func didReceiveMemoryWarning() {
