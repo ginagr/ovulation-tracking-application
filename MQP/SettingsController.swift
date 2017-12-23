@@ -21,12 +21,9 @@ class SettingsController: UIViewController, UIPopoverPresentationControllerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        PersonalTheme.loadTheme()
         setupTheme(currView: self)
         
-        backgroundButtonColor.backgroundColor = PersonalTheme.background
-        secondaryButtonColor.backgroundColor = PersonalTheme.secondary
-        textButtonColor.backgroundColor = PersonalTheme.text
+        updateButtons()
     }
     
     override func didReceiveMemoryWarning() {
@@ -107,12 +104,27 @@ class SettingsController: UIViewController, UIPopoverPresentationControllerDeleg
         present(colorPickerVc, animated: true, completion: nil)
     }
     
+    func updateButtons() {
+        backgroundButtonColor.backgroundColor = PersonalTheme.background
+        secondaryButtonColor.backgroundColor = PersonalTheme.secondary
+        textButtonColor.backgroundColor = PersonalTheme.text
+        
+        backgroundButtonColor.layer.borderWidth = 1
+        backgroundButtonColor.layer.borderColor = UIColor.black.cgColor
+        secondaryButtonColor.layer.borderWidth = 1
+        secondaryButtonColor.layer.borderColor = UIColor.black.cgColor
+        textButtonColor.layer.borderWidth = 1
+        textButtonColor.layer.borderColor = UIColor.black.cgColor
+    }
+    
     @IBAction func saveSettings() {
         //TODO: update settings
         let mainController = storyboard?.instantiateViewController(withIdentifier: "MainController") as! MainController
         self.present(mainController, animated:false, completion:nil)
     }
     
+    
+
     
     
 }

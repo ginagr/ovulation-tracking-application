@@ -12,7 +12,6 @@ class SymptomsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        PersonalTheme.loadTheme()
         setupTheme(currView: self)
         
     }

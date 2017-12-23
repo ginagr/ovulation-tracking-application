@@ -7,13 +7,28 @@
 //
 
 import UIKit
+import UserNotifications
 
 class AlertsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        PersonalTheme.loadTheme()
         setupTheme(currView: self)
+        
+        let center = UNUserNotificationCenter.current()
+        let options: UNAuthorizationOptions = [.alert, .sound];
+        center.requestAuthorization(options: options) {
+            (granted, error) in
+            if !granted {
+                print("Something went wrong")
+            }
+        }
+        
+//        center.getNotificationSettings { (settings) in
+//            if settings.authorizationStatus != .authorized {
+//                // Notifications not allowed
+//            }
+//        }
     }
     
     override func didReceiveMemoryWarning() {

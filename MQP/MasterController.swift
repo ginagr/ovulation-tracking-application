@@ -42,15 +42,17 @@ struct PersonalTheme {
 }
 
 func setupTheme(currView: UIViewController) {
+    PersonalTheme.loadTheme()
     currView.view.backgroundColor = PersonalTheme.background
-    changeTextColor(currView: currView)
     changeSecondaryColor(currView: currView)
+    changeTextColor(currView: currView)
 }
 
 func changeTextColor(currView: UIViewController) {
     for view in currView.view.subviews as [UIView] {
         if let btn = view as? UIButton {
-            btn.titleLabel?.textColor = PersonalTheme.text
+//            btn.titleLabel?.textColor = PersonalTheme.text
+            btn.setTitleColor(PersonalTheme.text, for: UIControlState.normal)
         } else if let lbl = view as? UILabel {
             lbl.textColor = PersonalTheme.text
         }
