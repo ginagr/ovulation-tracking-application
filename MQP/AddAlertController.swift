@@ -22,7 +22,7 @@ class AddAlertController: UIViewController {
     var alerts = [UIStackView] ()
     var occurrences: [UIDatePicker] = []
     
-    var currentChanged = 0
+    var lastEdited: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,28 +97,48 @@ class AddAlertController: UIViewController {
     }
     
     @IBAction func timePickerChanged(_ sender: UITextField) {
-        let datePickerView = UIDatePicker()
-        datePickerView.datePickerMode = .time
-        sender.inputView = datePickerView
-        print("adding second target for \(String(describing: sender.text))")
-        datePickerView.addTarget(self, action: #selector(handleDatePicker(sender:)), for: .valueChanged)
+        lastEdited = sender
+        let inputView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 240))
+        
+        let datePickerView  : UIDatePicker = UIDatePicker(frame: CGRect(x: 0, y: 40, width: 0, height: 0))
+        datePickerView.datePickerMode = UIDatePickerMode.time
+        inputView.addSubview(datePickerView) // add date picker to UIView
+        
+        let doneButton = UIButton(frame: CGRect(x: (self.view.frame.size.width/2) - (100/2), y: 0, width: 100, height: 50))
+        doneButton.setTitle("Done", for: UIControlState.normal)
+        doneButton.setTitle("Done", for: UIControlState.highlighted)
+        doneButton.setTitleColor(UIColor.black, for: UIControlState.normal)
+        doneButton.setTitleColor(UIColor.gray, for: UIControlState.highlighted)
+        
+        inputView.addSubview(doneButton) // add Button to UIView
+        
+        doneButton.addTarget(self, action: #selector(doneButton(sender:)), for: UIControlEvents.touchUpInside) // set button click event
+        
+        sender.inputView = inputView
+        datePickerView.addTarget(self, action: #selector(handleDatePicker(sender:)), for: UIControlEvents.valueChanged)
+    }
+    
+    @objc func doneButton(sender:UIButton) {
+        view.endEditing(true)
     }
     
     @objc func handleDatePicker(sender: UIDatePicker) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
+        dateFormatter.dateFormat = "hh:mm a"
+        lastEdited.text = dateFormatter.string(from: sender.date)
+//        for (_, element) in alerts.enumerated() {
+//            for case let textField as UITextField in element.subviews {
+//                print("INPUT VIEW: \(String(describing: textField.inputView))")
+//                if textField.inputView == sender {
+//                    print("found!")
+//                    textField.text = dateFormatter.string(from: sender.date)
+//                }
+//            }
+//        }
 //        textfieldjobdate.text = dateFormatter.string(from: sender.date)
         print("CHANGING \(dateFormatter.string(from: sender.date))")
     }
-    
-    
-    func occurrenceTimeChanged(sender: UIDatePicker) {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        let time = formatter.string(from: sender.date)
-        print("Time: \(time) &&  \(String(describing: occurrences.index(of: sender)))")
-    }
-    
+
     func deleteOccurence() {
          alerts[Int(stepperValue.text!)!].isHidden = true
     }
