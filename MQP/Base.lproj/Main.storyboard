@@ -215,21 +215,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Title of Alert" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Weh-z1-iHR">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title (Phone Notification)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Weh-z1-iHR">
                                 <rect key="frame" x="16" y="128" width="288" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Body of Alert" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uJY-Yi-4Uv">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Body (Phone Notification)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uJY-Yi-4Uv">
                                 <rect key="frame" x="16" y="166" width="288" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Name of Alert" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tiF-Xx-lnP">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name (Personal View)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tiF-Xx-lnP">
                                 <rect key="frame" x="16" y="90" width="288" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -256,8 +256,11 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jMl-FU-6B1">
                                 <rect key="frame" x="156" y="215" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="switchChanged:" destination="j4P-1K-2Fj" eventType="valueChanged" id="UrZ-mW-Q6V"/>
+                                </connections>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Daily:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ry4-md-DQr">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Every Day:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ry4-md-DQr">
                                 <rect key="frame" x="16" y="215" width="136" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
@@ -271,30 +274,51 @@
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="njv-Cy-fJd">
                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                         <state key="normal" title="M"/>
+                                        <connections>
+                                            <action selector="weekButtonTouched:" destination="j4P-1K-2Fj" eventType="touchUpInside" id="acN-VZ-QMp"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p5w-TH-exc">
                                         <rect key="frame" x="30" y="0.0" width="30" height="30"/>
                                         <state key="normal" title="T"/>
+                                        <connections>
+                                            <action selector="weekButtonTouched:" destination="j4P-1K-2Fj" eventType="touchUpInside" id="JFb-A5-l43"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JGj-od-jOc">
                                         <rect key="frame" x="60" y="0.0" width="30" height="30"/>
                                         <state key="normal" title="W"/>
+                                        <connections>
+                                            <action selector="weekButtonTouched:" destination="j4P-1K-2Fj" eventType="touchUpInside" id="PcU-ei-xMf"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fAg-wV-Pwf">
                                         <rect key="frame" x="90" y="0.0" width="30" height="30"/>
                                         <state key="normal" title="Th"/>
+                                        <connections>
+                                            <action selector="weekButtonTouched:" destination="j4P-1K-2Fj" eventType="touchUpInside" id="kll-Lr-dlu"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLb-ov-WZn">
                                         <rect key="frame" x="120" y="0.0" width="30" height="30"/>
                                         <state key="normal" title="F"/>
+                                        <connections>
+                                            <action selector="weekButtonTouched:" destination="j4P-1K-2Fj" eventType="touchUpInside" id="n83-Rq-GfB"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ze-se-oGo">
                                         <rect key="frame" x="150" y="0.0" width="30" height="30"/>
                                         <state key="normal" title="Sa"/>
+                                        <connections>
+                                            <action selector="weekButtonTouched:" destination="j4P-1K-2Fj" eventType="touchUpInside" id="zc5-uB-QSH"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MSL-kn-SBI">
                                         <rect key="frame" x="180" y="0.0" width="30" height="30"/>
                                         <state key="normal" title="Su"/>
+                                        <connections>
+                                            <action selector="weekButtonTouched:" destination="j4P-1K-2Fj" eventType="touchUpInside" id="GYY-Eh-Zhz"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -440,9 +464,18 @@
                         <outlet property="alarmOne" destination="9U1-k0-uzR" id="nkE-Dd-PvQ"/>
                         <outlet property="alarmThree" destination="cO6-T8-L7o" id="vE7-Hh-Zot"/>
                         <outlet property="alarmTwo" destination="cf1-Ni-565" id="3LM-is-4hl"/>
+                        <outlet property="dailySwitch" destination="jMl-FU-6B1" id="4sL-b8-qid"/>
+                        <outlet property="fridayButton" destination="LLb-ov-WZn" id="Suk-Ol-tIN"/>
+                        <outlet property="mondayButton" destination="njv-Cy-fJd" id="5Lp-C1-nfO"/>
+                        <outlet property="saturdayButton" destination="5ze-se-oGo" id="v0b-Kv-pzs"/>
                         <outlet property="scrollView" destination="PW1-hc-yOf" id="Ih5-ta-Pem"/>
                         <outlet property="stepper" destination="9Vz-r6-n8U" id="XXj-wp-ZzK"/>
                         <outlet property="stepperValue" destination="GGm-1N-6ue" id="XN7-dc-tHn"/>
+                        <outlet property="sundayButton" destination="MSL-kn-SBI" id="knD-lG-95t"/>
+                        <outlet property="thursdayButton" destination="fAg-wV-Pwf" id="ZD7-aa-d5Z"/>
+                        <outlet property="tuesdayButton" destination="p5w-TH-exc" id="Rvd-5g-t6f"/>
+                        <outlet property="wednesdayButton" destination="JGj-od-jOc" id="KlW-qx-Mvc"/>
+                        <outlet property="weekStackView" destination="sHa-PX-WtK" id="8G7-jz-ChL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CN3-Lm-m3P" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -598,6 +631,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="drT-rQ-VSC"/>
-        <segue reference="0Ya-3O-JRK"/>
+        <segue reference="OQK-Cd-H8V"/>
     </inferredMetricsTieBreakers>
 </document>

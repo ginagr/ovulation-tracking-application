@@ -10,6 +10,16 @@ import UIKit
 
 class AddAlertController: UIViewController {
     
+    @IBOutlet weak var weekStackView: UIStackView!
+    @IBOutlet weak var dailySwitch: UISwitch!
+    @IBOutlet weak var mondayButton: UIButton!
+    @IBOutlet weak var tuesdayButton: UIButton!
+    @IBOutlet weak var wednesdayButton: UIButton!
+    @IBOutlet weak var thursdayButton: UIButton!
+    @IBOutlet weak var fridayButton: UIButton!
+    @IBOutlet weak var saturdayButton: UIButton!
+    @IBOutlet weak var sundayButton: UIButton!
+    
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var stepperValue: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -20,13 +30,12 @@ class AddAlertController: UIViewController {
     @IBOutlet weak var alarmFive: UIStackView!
     
     var alerts = [UIStackView] ()
-    var occurrences: [UIDatePicker] = []
-    
     var lastEdited: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTheme(currView: self)
+        dailySwitch.isOn = false
         
 //        scrollView.isScrollEnabled = true
 //        scrollView.contentSize.height = UIScreen.main.bounds.height
@@ -126,21 +135,32 @@ class AddAlertController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "hh:mm a"
         lastEdited.text = dateFormatter.string(from: sender.date)
-//        for (_, element) in alerts.enumerated() {
-//            for case let textField as UITextField in element.subviews {
-//                print("INPUT VIEW: \(String(describing: textField.inputView))")
-//                if textField.inputView == sender {
-//                    print("found!")
-//                    textField.text = dateFormatter.string(from: sender.date)
-//                }
-//            }
-//        }
-//        textfieldjobdate.text = dateFormatter.string(from: sender.date)
-        print("CHANGING \(dateFormatter.string(from: sender.date))")
     }
 
     func deleteOccurence() {
          alerts[Int(stepperValue.text!)!].isHidden = true
+    }
+    
+    @IBAction func weekButtonTouched(_ sender: UIButton) {
+        if sender.isSelected {
+            sender.isSelected = false
+        } else {
+             sender.isSelected = true
+        }
+    }
+    
+    @IBAction func switchChanged(_ sender: UISwitch) {
+        if sender.isOn {
+            for case let button as UIButton in weekStackView.subviews {
+                button.isSelected = true
+                button.isEnabled = false
+            }
+        } else {
+            for case let button as UIButton in weekStackView.subviews {
+                button.isSelected = false
+                button.isEnabled = true
+            }
+        }
     }
 }
 
