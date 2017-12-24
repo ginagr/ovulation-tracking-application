@@ -22,6 +22,8 @@ class AddAlertController: UIViewController {
     var alerts = [UIStackView] ()
     var occurrences: [UIDatePicker] = []
     
+    var currentChanged = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTheme(currView: self)
@@ -60,7 +62,14 @@ class AddAlertController: UIViewController {
     }
     
     func addOccurence() {
-        alerts[Int(stepperValue.text!)!-1].isHidden = false
+        let occurence = Int(stepperValue.text!)!-1
+        alerts[occurence].isHidden = false
+        
+//        for case let textField as UITextField in alerts[occurence].subviews {
+//            print("adding target for \(String(describing: textField.text))")
+//            textField.addTarget(self, action: Selector(("timePickerChanged:")), for: .valueChanged)
+//        }
+        
         
 //        let verticalView = UIStackView()
 //        verticalView.axis = .horizontal
@@ -87,12 +96,27 @@ class AddAlertController: UIViewController {
 
     }
     
+    @IBAction func timePickerChanged(_ sender: UITextField) {
+        let datePickerView = UIDatePicker()
+        datePickerView.datePickerMode = .time
+        sender.inputView = datePickerView
+        print("adding second target for \(String(describing: sender.text))")
+        datePickerView.addTarget(self, action: #selector(handleDatePicker(sender:)), for: .valueChanged)
+    }
+    
+    @objc func handleDatePicker(sender: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+//        textfieldjobdate.text = dateFormatter.string(from: sender.date)
+        print("CHANGING \(dateFormatter.string(from: sender.date))")
+    }
+    
+    
     func occurrenceTimeChanged(sender: UIDatePicker) {
         let formatter = DateFormatter()
         formatter.timeStyle = .short
         let time = formatter.string(from: sender.date)
         print("Time: \(time) &&  \(String(describing: occurrences.index(of: sender)))")
-        
     }
     
     func deleteOccurence() {

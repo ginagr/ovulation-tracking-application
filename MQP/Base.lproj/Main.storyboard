@@ -331,6 +331,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="timePickerChanged:" destination="j4P-1K-2Fj" eventType="editingDidBegin" id="d5i-5l-q1O"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -349,6 +352,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="timePickerChanged:" destination="j4P-1K-2Fj" eventType="editingDidBegin" id="oaN-H6-UG3"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -367,6 +373,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="timePickerChanged:" destination="j4P-1K-2Fj" eventType="editingDidBegin" id="uWZ-B4-HtO"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -385,6 +394,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="timePickerChanged:" destination="j4P-1K-2Fj" eventType="editingDidBegin" id="9uW-Vu-r1e"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -403,6 +415,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="timePickerChanged:" destination="j4P-1K-2Fj" eventType="editingDidBegin" id="3Sv-9h-8ik"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
