@@ -12,24 +12,34 @@ class AddAlertController: UIViewController {
     
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var stepperValue: UILabel!
-    @IBOutlet weak var occurrenceStackView: UIStackView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var alarmOne: UIStackView!
+    @IBOutlet weak var alarmTwo: UIStackView!
+    @IBOutlet weak var alarmThree: UIStackView!
+    @IBOutlet weak var alarmFour: UIStackView!
+    @IBOutlet weak var alarmFive: UIStackView!
     
-    @IBOutlet var alerts:[UIStackView]!
-    
+    var alerts = [UIStackView] ()
     var occurrences: [UIDatePicker] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTheme(currView: self)
         
-        scrollView.isScrollEnabled = true
-        scrollView.contentSize.height = occurrenceStackView.frame.height + 30
+//        scrollView.isScrollEnabled = true
+//        scrollView.contentSize.height = UIScreen.main.bounds.height
         
+        alerts = [alarmOne, alarmTwo, alarmThree, alarmFour, alarmFive]
+        alerts.append(alarmOne)
+        alerts.append(alarmTwo)
+        alerts.append(alarmThree)
+        alerts.append(alarmFour)
+        alerts.append(alarmFive)
+
         for index in 0...Int(stepperValue.text!)!-1 {
             alerts[index].isHidden = false
         }
-        for index in Int(stepperValue.text!)!...9 {
+        for index in Int(stepperValue.text!)!...4 {
             alerts[index].isHidden = true
         }
         
@@ -37,8 +47,8 @@ class AddAlertController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
+    
     @IBAction func stepperAction(_ sender: Any) {
         if (Int(stepperValue.text!))! < Int(stepper.value) {
             stepperValue.text = "\(Int(stepper.value))"
@@ -86,7 +96,7 @@ class AddAlertController: UIViewController {
     }
     
     func deleteOccurence() {
-         alerts[Int(stepperValue.text!)!-1].isHidden = true
+         alerts[Int(stepperValue.text!)!].isHidden = true
     }
 }
 
