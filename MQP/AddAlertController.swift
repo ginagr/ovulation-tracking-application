@@ -10,6 +10,11 @@ import UIKit
 
 class AddAlertController: UIViewController {
     
+    
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var titleField: UITextField!
+    @IBOutlet weak var bodyField: UITextField!
+    
     @IBOutlet weak var weekStackView: UIStackView!
     @IBOutlet weak var dailySwitch: UISwitch!
     @IBOutlet weak var mondayButton: UIButton!
@@ -47,10 +52,10 @@ class AddAlertController: UIViewController {
         alerts.append(alarmFour)
         alerts.append(alarmFive)
 
-        for index in 0...Int(stepperValue.text!)!-1 {
+        for index in 0...Int(stepper.value-1) {
             alerts[index].isHidden = false
         }
-        for index in Int(stepperValue.text!)!...4 {
+        for index in Int(stepper.value-1)...4 {
             alerts[index].isHidden = true
         }
         
@@ -161,6 +166,31 @@ class AddAlertController: UIViewController {
                 button.isEnabled = true
             }
         }
+    }
+    
+    @IBAction func saveAlert() {
+        let name = nameField.text!
+        let title = titleField.text!
+        let body = bodyField.text!
+        let everyday = dailySwitch.isOn
+        let weekdays = [mondayButton.isSelected, tuesdayButton.isSelected, wednesdayButton.isSelected, thursdayButton.isSelected, fridayButton.isSelected, saturdayButton.isSelected, sundayButton.isSelected]
+        var times = [Date] ()
+        for index in 0...Int(stepper.value-1) {
+            for case let textField as UITextField in alerts[index].subviews {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "hh:mm a"
+                let date = dateFormatter.date(from: textField.text!)
+                times.append(date!)
+            }
+        }
+        
+        let alertItem = AlertItem(name: name, title: title, body: body, everyday: everyday, weekdays: weekdays, times: times, UUID: UUID().uuidString)
+        
+        AlertList.sharedInstance.addItem(alertItem) // schedule a local notification to persist this item
+        
+        let mainController = storyboard?.instantiateViewController(withIdentifier: "MainController") as! MainController
+        self.present(mainController, animated:false, completion:nil)
+        
     }
 }
 

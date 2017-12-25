@@ -21,6 +21,8 @@
 		33EBE4D01FEC6AA1001D18AD /* Colors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 33EBE4CF1FEC6AA1001D18AD /* Colors.plist */; };
 		33EBE4D21FEC7566001D18AD /* MasterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EBE4D11FEC7566001D18AD /* MasterController.swift */; };
 		33EBE4D41FEDCDEB001D18AD /* AddAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EBE4D31FEDCDEB001D18AD /* AddAlertController.swift */; };
+		33EBE4DC1FF0590A001D18AD /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EBE4DB1FF0590A001D18AD /* AlertItem.swift */; };
+		33EBE4DE1FF05E2B001D18AD /* AlertList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EBE4DD1FF05E2B001D18AD /* AlertList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		33EBE4CF1FEC6AA1001D18AD /* Colors.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Colors.plist; sourceTree = "<group>"; };
 		33EBE4D11FEC7566001D18AD /* MasterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterController.swift; sourceTree = "<group>"; };
 		33EBE4D31FEDCDEB001D18AD /* AddAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlertController.swift; sourceTree = "<group>"; };
+		33EBE4DB1FF0590A001D18AD /* AlertItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
+		33EBE4DD1FF05E2B001D18AD /* AlertList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,8 @@
 				33EBE4D31FEDCDEB001D18AD /* AddAlertController.swift */,
 				3329419F1FEC5C020022B196 /* ColorPickerViewController.swift */,
 				33EBE4D11FEC7566001D18AD /* MasterController.swift */,
+				33EBE4DB1FF0590A001D18AD /* AlertItem.swift */,
+				33EBE4DD1FF05E2B001D18AD /* AlertList.swift */,
 			);
 			path = MQP;
 			sourceTree = "<group>";
@@ -227,11 +233,13 @@
 				3329419A1FEB9ACD0022B196 /* SettingsController.swift in Sources */,
 				33EBE4D21FEC7566001D18AD /* MasterController.swift in Sources */,
 				3329417A1FEB88E30022B196 /* MainController.swift in Sources */,
+				33EBE4DC1FF0590A001D18AD /* AlertItem.swift in Sources */,
 				33EBE4D41FEDCDEB001D18AD /* AddAlertController.swift in Sources */,
 				3329419C1FEB9ADD0022B196 /* CalendarController.swift in Sources */,
 				332941A01FEC5C020022B196 /* ColorPickerViewController.swift in Sources */,
 				332941781FEB88E30022B196 /* AppDelegate.swift in Sources */,
 				3329419E1FEB9AEC0022B196 /* AlertsController.swift in Sources */,
+				33EBE4DE1FF05E2B001D18AD /* AlertList.swift in Sources */,
 				332941981FEB9ABF0022B196 /* SymptomsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
