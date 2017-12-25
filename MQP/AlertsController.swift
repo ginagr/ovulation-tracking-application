@@ -9,7 +9,7 @@
 import UIKit
 import UserNotifications
 
-class AlertsController: UIViewController {
+class AlertsController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var alertTable: UITableView!
     
@@ -18,6 +18,9 @@ class AlertsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTheme(currView: self)
+        
+        alertTable.delegate = self
+        alertTable.dataSource = self
         
         let center = UNUserNotificationCenter.current()
         let options: UNAuthorizationOptions = [.alert, .sound];
@@ -46,48 +49,53 @@ class AlertsController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         refreshList()
     }
     
     @objc func refreshList() {
+        print("REFRESHING")
         alertItems = AlertList.sharedInstance.allItems()
         alertTable.reloadData()
     }
     
-     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        return 1
+//    }
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("TABLEVIEW1")
         return alertItems.count
     }
     
-   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+          print("TABLEVIEW2")
         let cell = tableView.dequeueReusableCell(withIdentifier: "alertCell", for: indexPath) // retrieve the prototype cell (subtitle style)
         let alertItem = alertItems[(indexPath as NSIndexPath).row] as AlertItem
         
         cell.textLabel?.text = alertItem.name as String!
-//        if (alertItem.isOverdue) { // the current time is later than the to-do item's deadline
-//            cell.detailTextLabel?.textColor = UIColor.red
-//        } else {
-            cell.detailTextLabel?.textColor = PersonalTheme.text // we need to reset this because a cell with red subtitle may be returned by dequeueReusableCellWithIdentifier:indexPath:
-//        }
+        //        if (alertItem.isOverdue) { // the current time is later than the to-do item's deadline
+        //            cell.detailTextLabel?.textColor = UIColor.red
+        //        } else {
+        cell.detailTextLabel?.textColor = PersonalTheme.text // we need to reset this because a cell with red subtitle may be returned by dequeueReusableCellWithIdentifier:indexPath:
+        //        }
         
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "'Due' MMM dd 'at' h:mm a" // example: "Due Jan 01 at 12:00 PM"
-//        cell.detailTextLabel?.text = dateFormatter.string(from: todoItem.deadline as Date)
+        //        let dateFormatter = DateFormatter()
+        //        dateFormatter.dateFormat = "'Due' MMM dd 'at' h:mm a" // example: "Due Jan 01 at 12:00 PM"
+        //        cell.detailTextLabel?.text = dateFormatter.string(from: todoItem.deadline as Date)
         
         return cell
     }
     
      func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+          print("TABLEVIEW3")
         return true // all cells are editable
     }
     
      func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+          print("TABLEVIEW4")
         if editingStyle == .delete { // the only editing style we'll support
             // Delete the row from the data source
             let item = alertItems.remove(at: (indexPath as NSIndexPath).row) // remove TodoItem from notifications array, assign removed item to 'item'
@@ -95,7 +103,6 @@ class AlertsController: UIViewController {
             AlertList.sharedInstance.removeItem(item) // delete backing property list entry and unschedule local notification (if it still exists)
         }
     }
-    
     
 }
 
