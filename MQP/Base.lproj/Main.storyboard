@@ -153,27 +153,6 @@
             <point key="canvasLocation" x="137" y="134"/>
         </scene>
         <!--Alerts Controller-->
-        <scene sceneID="3nr-K6-dfz">
-            <objects>
-                <tableViewController id="nSN-QX-tdB" customClass="AlertsController" customModule="MQP" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="E5m-2X-Z0U">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <connections>
-                            <outlet property="dataSource" destination="nSN-QX-tdB" id="dhT-Bl-rMY"/>
-                            <outlet property="delegate" destination="nSN-QX-tdB" id="yZX-Zc-oLC"/>
-                        </connections>
-                    </tableView>
-                    <connections>
-                        <outlet property="alertTable" destination="E5m-2X-Z0U" id="GqU-LJ-7Cn"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5Bi-Bg-Ng2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-633" y="850"/>
-        </scene>
-        <!--Alerts Controller-->
         <scene sceneID="eqv-fq-qZb">
             <objects>
                 <viewController id="ELX-ca-agW" customClass="AlertsController" customModule="MQP" customModuleProvider="target" sceneMemberID="viewController">
@@ -207,30 +186,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="288" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJb-Ug-mDx">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJb-Ug-mDx">
                                                     <rect key="frame" x="15" y="11" width="258" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="URA-In-3pe">
-                                                    <rect key="frame" x="208" y="6" width="70" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="DELETE"/>
-                                                    <connections>
-                                                        <action selector="deleteAlert:" destination="ELX-ca-agW" eventType="touchUpInside" id="gaF-BB-KHK"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ai4-4d-CSz">
-                                                    <rect key="frame" x="159" y="6" width="41" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="EDIT"/>
-                                                    <connections>
-                                                        <action selector="editAlert:" destination="ELX-ca-agW" eventType="touchUpInside" id="psn-Ga-xoQ"/>
-                                                        <segue destination="j4P-1K-2Fj" kind="show" id="MVB-yp-jg6"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -261,7 +223,7 @@
         <!--Add Alert Controller-->
         <scene sceneID="fdh-8P-JZ4">
             <objects>
-                <viewController id="j4P-1K-2Fj" customClass="AddAlertController" customModule="MQP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddAlertController" id="j4P-1K-2Fj" customClass="AddAlertController" customModule="MQP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f8X-uD-5aM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -694,7 +656,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="XDo-cv-QOj"/>
         <segue reference="drT-rQ-VSC"/>
         <segue reference="0Ya-3O-JRK"/>
     </inferredMetricsTieBreakers>

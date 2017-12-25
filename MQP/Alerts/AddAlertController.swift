@@ -10,7 +10,6 @@ import UIKit
 
 class AddAlertController: UIViewController {
     
-    
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var bodyField: UITextField!
@@ -33,9 +32,12 @@ class AddAlertController: UIViewController {
     @IBOutlet weak var alarmThree: UIStackView!
     @IBOutlet weak var alarmFour: UIStackView!
     @IBOutlet weak var alarmFive: UIStackView!
-    
+
     var alerts = [UIStackView] ()
     var lastEdited: UITextField!
+    
+    var alert: AlertItem!
+    var weekdayButtons = [UIButton] ()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,12 +53,46 @@ class AddAlertController: UIViewController {
         alerts.append(alarmThree)
         alerts.append(alarmFour)
         alerts.append(alarmFive)
+        
+        weekdayButtons.append(sundayButton)
+        weekdayButtons.append(mondayButton)
+        weekdayButtons.append(tuesdayButton)
+        weekdayButtons.append(wednesdayButton)
+        weekdayButtons.append(thursdayButton)
+        weekdayButtons.append(fridayButton)
+        weekdayButtons.append(saturdayButton)
 
         for index in 0...Int(stepper.value-1) {
             alerts[index].isHidden = false
         }
         for index in Int(stepper.value-1)...4 {
             alerts[index].isHidden = true
+        }
+        
+        //populate if from edit
+        if alert != nil {
+            nameField.text = alert.name
+            titleField.text = alert.title
+            bodyField.text = alert.body
+            dailySwitch.isOn = alert.everyday
+            for (index, element) in alert.weekdays.enumerated() {
+                weekdayButtons[index].isSelected = element
+            }
+            if alert.everyday {
+                 for (index, _) in alert.weekdays.enumerated() {
+                    weekdayButtons[index].isSelected = true
+                    weekdayButtons[index].isEnabled = false
+                }
+            }
+            stepper.value = Double(alert.title.count)
+            for index in 0...Int(stepper.value-1) {
+                alerts[index].isHidden = false
+                for case let textField as UITextField in alerts[index].subviews {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "hh:mm a"
+                    textField.text = dateFormatter.string(from: alert.times[index])
+                }
+            }
         }
         
     }

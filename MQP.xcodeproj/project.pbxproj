@@ -97,22 +97,17 @@
 		332941761FEB88E30022B196 /* MQP */ = {
 			isa = PBXGroup;
 			children = (
+				33EBE4E51FF0CE8F001D18AD /* Main */,
+				33EBE4E41FF0CE85001D18AD /* Calendar */,
+				33EBE4E31FF0CE7C001D18AD /* Symptoms */,
+				33EBE4E21FF0CE6C001D18AD /* Settings */,
+				33EBE4E11FF0CE49001D18AD /* Alerts */,
 				332941771FEB88E30022B196 /* AppDelegate.swift */,
 				3329417E1FEB88E30022B196 /* Assets.xcassets */,
-				332941801FEB88E30022B196 /* LaunchScreen.storyboard */,
 				332941831FEB88E30022B196 /* Info.plist */,
-				33EBE4CF1FEC6AA1001D18AD /* Colors.plist */,
 				3329417B1FEB88E30022B196 /* Main.storyboard */,
-				332941791FEB88E30022B196 /* MainController.swift */,
-				332941971FEB9ABF0022B196 /* SymptomsController.swift */,
-				332941991FEB9ACC0022B196 /* SettingsController.swift */,
-				3329419B1FEB9ADC0022B196 /* CalendarController.swift */,
-				3329419D1FEB9AEC0022B196 /* AlertsController.swift */,
-				33EBE4D31FEDCDEB001D18AD /* AddAlertController.swift */,
-				3329419F1FEC5C020022B196 /* ColorPickerViewController.swift */,
 				33EBE4D11FEC7566001D18AD /* MasterController.swift */,
-				33EBE4DB1FF0590A001D18AD /* AlertItem.swift */,
-				33EBE4DD1FF05E2B001D18AD /* AlertList.swift */,
+				332941801FEB88E30022B196 /* LaunchScreen.storyboard */,
 			);
 			path = MQP;
 			sourceTree = "<group>";
@@ -124,6 +119,51 @@
 				3329418E1FEB88E30022B196 /* Info.plist */,
 			);
 			path = MQPTests;
+			sourceTree = "<group>";
+		};
+		33EBE4E11FF0CE49001D18AD /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				3329419D1FEB9AEC0022B196 /* AlertsController.swift */,
+				33EBE4D31FEDCDEB001D18AD /* AddAlertController.swift */,
+				33EBE4DB1FF0590A001D18AD /* AlertItem.swift */,
+				33EBE4DD1FF05E2B001D18AD /* AlertList.swift */,
+			);
+			path = Alerts;
+			sourceTree = "<group>";
+		};
+		33EBE4E21FF0CE6C001D18AD /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				33EBE4CF1FEC6AA1001D18AD /* Colors.plist */,
+				332941991FEB9ACC0022B196 /* SettingsController.swift */,
+				3329419F1FEC5C020022B196 /* ColorPickerViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		33EBE4E31FF0CE7C001D18AD /* Symptoms */ = {
+			isa = PBXGroup;
+			children = (
+				332941971FEB9ABF0022B196 /* SymptomsController.swift */,
+			);
+			path = Symptoms;
+			sourceTree = "<group>";
+		};
+		33EBE4E41FF0CE85001D18AD /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				3329419B1FEB9ADC0022B196 /* CalendarController.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		33EBE4E51FF0CE8F001D18AD /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				332941791FEB88E30022B196 /* MainController.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
