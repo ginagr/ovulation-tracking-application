@@ -62,10 +62,11 @@ class AddAlertController: UIViewController {
         weekdayButtons.append(fridayButton)
         weekdayButtons.append(saturdayButton)
 
-        for index in 0...Int(stepper.value-1) {
-            alerts[index].isHidden = false
-        }
-        for index in Int(stepper.value-1)...4 {
+//        for index in 0...Int(stepper.value-1) {
+//            alerts[index].isHidden = false
+//        }
+        alerts[0].isHidden = false
+        for index in 1...4 {
             alerts[index].isHidden = true
         }
         
@@ -84,8 +85,9 @@ class AddAlertController: UIViewController {
                     weekdayButtons[index].isEnabled = false
                 }
             }
-            stepper.value = Double(alert.title.count)
-            for index in 0...Int(stepper.value-1) {
+            stepper.value = Double(alert.times.count)
+            stepperValue.text = String(alert.times.count)
+            for index in 0...alert.times.count-1 {
                 alerts[index].isHidden = false
                 for case let textField as UITextField in alerts[index].subviews {
                     let dateFormatter = DateFormatter()
@@ -95,6 +97,14 @@ class AddAlertController: UIViewController {
             }
         }
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+        nameField.resignFirstResponder()
+        titleField.resignFirstResponder()
+        bodyField.resignFirstResponder()
     }
     
     override func didReceiveMemoryWarning() {
@@ -205,11 +215,12 @@ class AddAlertController: UIViewController {
     }
     
     @IBAction func saveAlert() {
+        
         let name = nameField.text!
         let title = titleField.text!
         let body = bodyField.text!
         let everyday = dailySwitch.isOn
-        let weekdays = [mondayButton.isSelected, tuesdayButton.isSelected, wednesdayButton.isSelected, thursdayButton.isSelected, fridayButton.isSelected, saturdayButton.isSelected, sundayButton.isSelected]
+        let weekdays = [sundayButton.isSelected, mondayButton.isSelected, tuesdayButton.isSelected, wednesdayButton.isSelected, thursdayButton.isSelected, fridayButton.isSelected, saturdayButton.isSelected]
         var times = [Date] ()
         for index in 0...Int(stepper.value-1) {
             for case let textField as UITextField in alerts[index].subviews {
@@ -222,10 +233,15 @@ class AddAlertController: UIViewController {
         
         let alertItem = AlertItem(name: name, title: title, body: body, everyday: everyday, weekdays: weekdays, times: times, UUID: UUID().uuidString)
         
-        AlertList.sharedInstance.addItem(alertItem) // schedule a local notification to persist this item
+        if alert != nil { //update, dont create new
+            AlertList.sharedInstance.removeItem(alert)
+            AlertList.sharedInstance.addItem(alertItem) // schedule a local notification to persist this item
+        } else {
+            AlertList.sharedInstance.addItem(alertItem)
+        }
         
-        let mainController = storyboard?.instantiateViewController(withIdentifier: "MainController") as! MainController
-        self.present(mainController, animated:false, completion:nil)
+        let alertsController = storyboard?.instantiateViewController(withIdentifier: "AlertsController") as! AlertsController
+        self.present(alertsController, animated:false, completion:nil)
         
     }
 }

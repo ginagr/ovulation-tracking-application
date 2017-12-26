@@ -40,13 +40,12 @@ class AlertsController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
     }
     
+    //delete
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        print("TABLEVIEW4")
-        if editingStyle == .delete { // the only editing style we'll support
-            // Delete the row from the data source
-            let item = alertItems.remove(at: (indexPath as NSIndexPath).row) // remove TodoItem from notifications array, assign removed item to 'item'
+        if editingStyle == .delete {
+            let item = alertItems.remove(at: (indexPath as NSIndexPath).row)
             alertTable.deleteRows(at: [indexPath], with: .fade)
-            AlertList.sharedInstance.removeItem(item) // delete backing property list entry and unschedule local notification (if it still exists)
+            AlertList.sharedInstance.removeItem(item)
         }
     }
     
@@ -58,9 +57,6 @@ class AlertsController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         let action = UIAlertAction(title: "Delete", style: .default, handler: { (action) -> Void in
             print("Deleting reminder")
-//            let item = alertItems.remove(at: (indexPath as NSIndexPath).row) // remove TodoItem from notifications array, assign removed item to 'item'
-//            alertTable.deleteRows(at: [indexPath], with: .fade)
-//            AlertList.sharedInstance.removeItem(item) // delete backing property list entry and unschedule local notification (if it still exists)
         })
         
         alert.view.tintColor = PersonalTheme.text  // change text color of the buttons

@@ -97,17 +97,14 @@
 		332941761FEB88E30022B196 /* MQP */ = {
 			isa = PBXGroup;
 			children = (
+				33EBE4E71FF1CA5C001D18AD /* Master */,
+				33EBE4E61FF1CA4A001D18AD /* Other */,
 				33EBE4E51FF0CE8F001D18AD /* Main */,
 				33EBE4E41FF0CE85001D18AD /* Calendar */,
 				33EBE4E31FF0CE7C001D18AD /* Symptoms */,
 				33EBE4E21FF0CE6C001D18AD /* Settings */,
 				33EBE4E11FF0CE49001D18AD /* Alerts */,
-				332941771FEB88E30022B196 /* AppDelegate.swift */,
-				3329417E1FEB88E30022B196 /* Assets.xcassets */,
-				332941831FEB88E30022B196 /* Info.plist */,
 				3329417B1FEB88E30022B196 /* Main.storyboard */,
-				33EBE4D11FEC7566001D18AD /* MasterController.swift */,
-				332941801FEB88E30022B196 /* LaunchScreen.storyboard */,
 			);
 			path = MQP;
 			sourceTree = "<group>";
@@ -164,6 +161,25 @@
 				332941791FEB88E30022B196 /* MainController.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		33EBE4E61FF1CA4A001D18AD /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				332941771FEB88E30022B196 /* AppDelegate.swift */,
+				3329417E1FEB88E30022B196 /* Assets.xcassets */,
+				332941831FEB88E30022B196 /* Info.plist */,
+				332941801FEB88E30022B196 /* LaunchScreen.storyboard */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		33EBE4E71FF1CA5C001D18AD /* Master */ = {
+			isa = PBXGroup;
+			children = (
+				33EBE4D11FEC7566001D18AD /* MasterController.swift */,
+			);
+			path = Master;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -45,7 +45,7 @@ class AlertList {
         notification.userInfo = ["title": item.title, "UUID": item.UUID] // assign a unique identifier to the notification so that we can retrieve it later
         
         if item.everyday {
-            for(index,element) in item.times.enumerated() {
+            for(_,element) in item.times.enumerated() {
                 let triggerDate =  Calendar.current.dateComponents([.hour,.minute], from: element as Date)
                 let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: true)
 //                let identifier = item.UUID + "_" + String(index)
