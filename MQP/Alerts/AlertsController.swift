@@ -43,27 +43,23 @@ class AlertsController: UIViewController, UITableViewDelegate, UITableViewDataSo
     //delete
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let item = alertItems.remove(at: (indexPath as NSIndexPath).row)
-            alertTable.deleteRows(at: [indexPath], with: .fade)
-            AlertList.sharedInstance.removeItem(item)
+            let alert = UIAlertController(title: "Delete Reminder Permanently?", message: "", preferredStyle: .alert)
+//            let attributedTitle = NSMutableAttributedString(string: "Delete Reminder?")
+//            alert.setValue(attributedTitle, forKey: "attributedTitle")
+            alert.view.tintColor = PersonalTheme.text  // change text color of the buttons
+//            alert.view.backgroundColor = PersonalTheme.secondary  // change background color
+            
+            let action = UIAlertAction(title: "Delete", style: .destructive, handler: { (action) -> Void in
+                print("Deleting reminder")
+                let item = self.alertItems.remove(at: (indexPath as NSIndexPath).row)
+                self.alertTable.deleteRows(at: [indexPath], with: .fade)
+                AlertList.sharedInstance.removeItem(item)
+            })
+            
+            alert.addAction(action)
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
         }
-    }
-    
-    @IBAction func deleteAlert(_ sender: UIButton) {
-        
-        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
-        let attributedTitle = NSMutableAttributedString(string: "Delete Reminder?")
-        alert.setValue(attributedTitle, forKey: "attributedTitle")
-        
-        let action = UIAlertAction(title: "Delete", style: .default, handler: { (action) -> Void in
-            print("Deleting reminder")
-        })
-        
-        alert.view.tintColor = PersonalTheme.text  // change text color of the buttons
-        alert.view.backgroundColor = PersonalTheme.secondary  // change background color
-        
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func editAlert(_ sender: UIButton) {

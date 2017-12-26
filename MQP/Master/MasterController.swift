@@ -69,8 +69,6 @@ func changeSecondaryColor(currView: UIViewController) {
     }
 }
 
-//defaults.setColor(color: UIColor.red, forKey: "myColor") // set
-//let myColor = defaults.colorForKey(key: "myColor") // get
 extension UserDefaults {
     func colorForKey(key: String) -> UIColor? {
         var color: UIColor?
