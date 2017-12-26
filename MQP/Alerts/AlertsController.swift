@@ -22,6 +22,9 @@ class AlertsController: UIViewController, UITableViewDelegate, UITableViewDataSo
         alertTable.delegate = self
         alertTable.dataSource = self
         
+        alertTable.backgroundColor = PersonalTheme.background
+        alertTable.separatorColor = PersonalTheme.secondary
+        
         let center = UNUserNotificationCenter.current()
         let options: UNAuthorizationOptions = [.alert, .sound];
         center.requestAuthorization(options: options) {
@@ -90,9 +93,15 @@ class AlertsController: UIViewController, UITableViewDelegate, UITableViewDataSo
         let cell = tableView.dequeueReusableCell(withIdentifier: "alertCell", for: indexPath) // retrieve the prototype cell (subtitle style)
         let alertItem = alertItems[(indexPath as NSIndexPath).row] as AlertItem
         
-        cell.textLabel?.text = "Name: " + alertItem.name as String!
+        if alertItem.name.count > 1 {
+            cell.textLabel?.text = alertItem.name as String!
+            cell.detailTextLabel?.text = alertItem.title as String!
+        } else { //no name
+            cell.textLabel?.text = alertItem.title as String!
+        }
+        cell.textLabel?.textColor = PersonalTheme.text
         cell.detailTextLabel?.textColor = PersonalTheme.text
-        cell.detailTextLabel?.text = "Title: " + alertItem.title as String!
+        cell.backgroundColor = PersonalTheme.background
         return cell
     }
     
