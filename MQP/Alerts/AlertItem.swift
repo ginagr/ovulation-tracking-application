@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 struct AlertItem {
     
     var name: String

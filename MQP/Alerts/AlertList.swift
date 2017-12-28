@@ -5,6 +5,7 @@
 //  Created by GGR on 12/24/17.
 //  Copyright © 2017 ggr. All rights reserved.
 //
+
 import UIKit
 import UserNotifications
 
@@ -124,8 +125,10 @@ class AlertList {
         }
         
         if var alertItems = UserDefaults.standard.dictionary(forKey: ITEMS_KEY) {
-            alertItems.removeValue(forKey: item.UUID)
-            UserDefaults.standard.set(alertItems, forKey: ITEMS_KEY) // save/overwrite todo item list
+            for(index, _) in item.times.enumerated() {
+                alertItems.removeValue(forKey: first + "_" + String(index))
+            }
+            UserDefaults.standard.set(alertItems, forKey: ITEMS_KEY) // save/overwrite alert item list
         }
     }
 }
