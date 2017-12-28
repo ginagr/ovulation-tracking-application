@@ -43,33 +43,6 @@ class AlertsController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
     }
     
-    //delete
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let alert = UIAlertController(title: "Delete Reminder Permanently?", message: "", preferredStyle: .alert)
-//            let attributedTitle = NSMutableAttributedString(string: "Delete Reminder?")
-//            alert.setValue(attributedTitle, forKey: "attributedTitle")
-            alert.view.tintColor = PersonalTheme.text  // change text color of the buttons
-//            alert.view.backgroundColor = PersonalTheme.secondary  // change background color
-            
-            let action = UIAlertAction(title: "Delete", style: .destructive, handler: { (action) -> Void in
-                print("Deleting reminder")
-                let item = self.alertItems.remove(at: (indexPath as NSIndexPath).row)
-                self.alertTable.deleteRows(at: [indexPath], with: .fade)
-                AlertList.sharedInstance.removeItem(item)
-            })
-            
-            alert.addAction(action)
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
-            present(alert, animated: true, completion: nil)
-        }
-    }
-    
-    @IBAction func editAlert(_ sender: UIButton) {
-        let mainController = storyboard?.instantiateViewController(withIdentifier: "MainController") as! MainController
-        self.present(mainController, animated:false, completion:nil)
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -85,12 +58,13 @@ class AlertsController: UIViewController, UITableViewDelegate, UITableViewDataSo
         alertTable.reloadData()
     }
     
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return alertItems.count
     }
     
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "alertCell", for: indexPath) // retrieve the prototype cell (subtitle style)
+    //populate cells
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "alertCell", for: indexPath)
         let alertItem = alertItems[(indexPath as NSIndexPath).row] as AlertItem
         
         if alertItem.name.count > 1 {
@@ -105,16 +79,70 @@ class AlertsController: UIViewController, UITableViewDelegate, UITableViewDataSo
         return cell
     }
     
-     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true // all cells are editable
     }
     
+    //edit
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let alertItem = alertItems[(indexPath as NSIndexPath).row] as AlertItem
         
         let viewController = storyboard?.instantiateViewController(withIdentifier: "AddAlertController") as! AddAlertController
         viewController.alert = alertItem
         self.present(viewController, animated:false, completion:nil)
+    }
+    
+    //delete
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        print("EDITING STYLE: \(editingStyle)")
+        if editingStyle == .delete {
+            let alert = UIAlertController(title: "Delete Reminder Permanently?", message: "", preferredStyle: .alert)
+            alert.view.tintColor = PersonalTheme.text  // change text color of the buttons
+            
+            let action = UIAlertAction(title: "Delete", style: .destructive, handler: { (action) -> Void in
+                print("Deleting reminder")
+                let item = self.alertItems.remove(at: (indexPath as NSIndexPath).row)
+                self.alertTable.deleteRows(at: [indexPath], with: .fade)
+                AlertList.sharedInstance.removeItem(item)
+            })
+            
+            alert.addAction(action)
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    //deactivate and delete
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        //deactivate  TODO: fix
+//        let editAction = UITableViewRowAction(style: .default, title: "Deactivate", handler: { (action, indexPath) in
+//            print("Deactivating reminder")
+//            let alertItem = self.alertItems[(indexPath as NSIndexPath).row] as AlertItem
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "alertCell", for: indexPath)
+//            cell.backgroundColor = UIColor.lightGray
+//        })
+//        editAction.backgroundColor = UIColor.blue
+    
+        //delete
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
+            let alert = UIAlertController(title: "Delete Reminder Permanently?", message: "", preferredStyle: .alert)
+            alert.view.tintColor = PersonalTheme.text  // change text color of the buttons
+            
+            let action = UIAlertAction(title: "Delete", style: .destructive, handler: { (action) -> Void in
+                print("Deleting reminder")
+                let item = self.alertItems.remove(at: (indexPath as NSIndexPath).row)
+                self.alertTable.deleteRows(at: [indexPath], with: .fade)
+                AlertList.sharedInstance.removeItem(item)
+            })
+            
+            alert.addAction(action)
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        })
+        deleteAction.backgroundColor = UIColor.red
+        
+      //  return [editAction, deleteAction]
+        return [deleteAction]
     }
     
 }

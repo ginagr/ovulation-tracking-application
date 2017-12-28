@@ -32,24 +32,24 @@ class AlertList {
     
     func addItem(_ item: AlertItem) {
         // persist a representation of this alert item in NSUserDefaults
-        var alertDictionary = UserDefaults.standard.dictionary(forKey: ITEMS_KEY) ?? Dictionary() // if todoItems hasn't been set in user defaults, initialize todoDictionary to an empty dictionary using nil-coalescing operator (??)
+        var alertDictionary = UserDefaults.standard.dictionary(forKey: ITEMS_KEY) ?? Dictionary()
         alertDictionary[item.UUID] = ["name": item.name, "title": item.title, "body": item.body, "everyday": item.everyday,
-                                      "weekdays": item.weekdays, "times": item.times, "UUID": item.UUID] // store NSData representation of todo item in dictionary with UUID as key
-        UserDefaults.standard.set(alertDictionary, forKey: ITEMS_KEY) // save/overwrite todo item list
+                                      "weekdays": item.weekdays, "times": item.times, "UUID": item.UUID]
+        UserDefaults.standard.set(alertDictionary, forKey: ITEMS_KEY)
         
         // create a corresponding local notification
         let notification = UNMutableNotificationContent()
         notification.title = item.title
         notification.body = item.body
         notification.sound = UNNotificationSound.default()
-        notification.userInfo = ["title": item.title, "UUID": item.UUID] // assign a unique identifier to the notification so that we can retrieve it later
+        notification.userInfo = ["title": item.title, "UUID": item.UUID]
         
         if item.everyday {
-            for(_,element) in item.times.enumerated() {
+            for(index,element) in item.times.enumerated() {
                 let triggerDate =  Calendar.current.dateComponents([.hour,.minute], from: element as Date)
                 let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: true)
-//                let identifier = item.UUID + "_" + String(index)
-                let identifier = item.UUID
+                let identifier = item.UUID + "_" + String(index)
+//                let identifier = item.UUID
                 let request = UNNotificationRequest(identifier: identifier, content: notification, trigger: trigger)
                 let center = UNUserNotificationCenter.current()
                 center.add(request, withCompletionHandler: { (error) in
@@ -71,8 +71,8 @@ class AlertList {
                         let date = createDate(weekday: index+1, date: time)
                         let triggerDate =  Calendar.current.dateComponents([.weekday,.hour,.minute], from: date as Date)
                         let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: true)
-//                        let identifier = item.UUID + "_" + String(index)
-                        let identifier = item.UUID
+                        let identifier = item.UUID + "_" + String(index)
+//                        let identifier = item.UUID
                         let request = UNNotificationRequest(identifier: identifier, content: notification, trigger: trigger)
                         let center = UNUserNotificationCenter.current()
                         center.add(request, withCompletionHandler: { (error) in
@@ -113,16 +113,15 @@ class AlertList {
     
     func removeItem(_ item: AlertItem) {
         let center = UNUserNotificationCenter.current()
-        center.removePendingNotificationRequests(withIdentifiers: [item.UUID])
-//        center.getPendingNotificationRequests(completionHandler: { (notifications) in
-//            print("notifications.count", notifications.count)
-//            for notification in notifications {
-//                if (notification.identifier == item.UUID) {
-//
-////                    UIApplication.shared.cancelLocalNotification(notification)
-//                }
-//            }
-//        })
+        
+        let fullIdentifier = item.UUID
+        let arr = fullIdentifier.split{$0 == "_"}
+        let first = arr[0]
+        
+        for(index, _) in item.times.enumerated() {
+            center.removePendingNotificationRequests(withIdentifiers: [first + "_" + String(index)])
+            print("Deleting reminder \(item.name) -> alert #\(index)")
+        }
         
         if var alertItems = UserDefaults.standard.dictionary(forKey: ITEMS_KEY) {
             alertItems.removeValue(forKey: item.UUID)
