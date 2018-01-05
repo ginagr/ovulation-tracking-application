@@ -135,9 +135,7 @@ class AlertList {
         }
         
         if var alertItems = UserDefaults.standard.dictionary(forKey: ITEMS_KEY) {
-            for(index, _) in item.times.enumerated() {
-                alertItems.removeValue(forKey: item.UUID)
-            }
+            alertItems.removeValue(forKey: item.UUID)
             UserDefaults.standard.set(alertItems, forKey: ITEMS_KEY) // save/overwrite alert item list
         }
     }
