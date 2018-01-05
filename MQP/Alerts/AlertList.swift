@@ -62,6 +62,7 @@ class AlertList {
                         print("Reminder \(item.name) has NOT been added successfully added with hour: \(hour), minute: \(minutes)")
                     } else {
                         print("Reminder \(item.name) has been added successfully added with hour: \(hour), minute: \(minutes)")
+                        print("Reminder \(item.name) -> id: \(item.UUID) and identifier: \(identifier)")
                     }
                 })
             }
@@ -86,6 +87,7 @@ class AlertList {
                                 print("Reminder \(item.name) has NOT been added successfully added with weekday: \(weekday),hour: \(hour), minute: \(minutes)")
                             } else {
                                 print("Reminder \(item.name) has been added successfully added with weekday: \(weekday),hour: \(hour), minute: \(minutes)")
+                                print("Reminder \(item.name) -> id: \(item.UUID) and identifier: \(identifier)")
                             }
                         })
                     }
@@ -119,14 +121,22 @@ class AlertList {
         let arr = fullIdentifier.split{$0 == "_"}
         let first = arr[0]
         
-        for(index, _) in item.times.enumerated() {
-            center.removePendingNotificationRequests(withIdentifiers: [first + "_" + String(index)])
-            print("Deleting reminder \(item.name) -> alert #\(index)")
+//        print("first: \(first)")
+        center.getPendingNotificationRequests { (notificationRequests) in
+            var identifiers: [String] = []
+            for notification:UNNotificationRequest in notificationRequests {
+//                print("notification identifier: \(notification.identifier) -> name: \(notification.content.title)")
+//                print(notification.identifier.range(of: first) != nil)
+                if notification.identifier.range(of: first) != nil {
+                    identifiers.append(notification.identifier)
+                }
+            }
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
         }
         
         if var alertItems = UserDefaults.standard.dictionary(forKey: ITEMS_KEY) {
             for(index, _) in item.times.enumerated() {
-                alertItems.removeValue(forKey: first + "_" + String(index))
+                alertItems.removeValue(forKey: item.UUID)
             }
             UserDefaults.standard.set(alertItems, forKey: ITEMS_KEY) // save/overwrite alert item list
         }
