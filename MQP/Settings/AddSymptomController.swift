@@ -13,7 +13,7 @@ class AddSymptomController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var binaryButton: UIButton!
     @IBOutlet weak var radioButton: UIButton!
-    @IBOutlet weak var checkBoxButton: UIButton!
+    @IBOutlet weak var checklistButton: UIButton!
     @IBOutlet weak var emojiButton: UIButton!
     @IBOutlet weak var calendarIconTextField: UITextField!
     
@@ -27,11 +27,35 @@ class AddSymptomController: UIViewController {
         
         loggingButtons.append(binaryButton)
         loggingButtons.append(radioButton)
-        loggingButtons.append(checkBoxButton)
+        loggingButtons.append(checklistButton)
         loggingButtons.append(emojiButton)
+        
+        if symptom != nil {
+            populate()
+        }
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    func populate() {
+        nameTextField.text = symptom.name
+        let enumlm = getLoggingMethodEnum(enumString: symptom.loggingMethod)
+        switch enumlm {
+        case loggingMethod.binary:
+            loggingMethodChosen(binaryButton)
+            break
+        case loggingMethod.checklist:
+            loggingMethodChosen(checklistButton)
+            break
+        case loggingMethod.emoji:
+            loggingMethodChosen(emojiButton)
+            break
+        case loggingMethod.radio:
+            loggingMethodChosen(radioButton)
+            break
+        }
+        calendarIconTextField.text = symptom.calendarIcon
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
@@ -41,16 +65,16 @@ class AddSymptomController: UIViewController {
 
     @IBAction func loggingTextChosen(_ sender: UIButton) {
         switch sender.currentTitle! {
-        case "Yes/No":
+        case "YES/NO":
             loggingMethodChosen(binaryButton)
             break
-        case "Radio":
+        case "RADIO":
             loggingMethodChosen(radioButton)
             break
-        case "Check Box":
-            loggingMethodChosen(checkBoxButton)
+        case "CHECKLIST":
+            loggingMethodChosen(checklistButton)
             break
-        case "Emoji":
+        case "EMOJI":
             loggingMethodChosen(emojiButton)
             break
         default :
@@ -69,7 +93,7 @@ class AddSymptomController: UIViewController {
         case radioButton:
             loggedMethod = loggingMethod.radio
             break
-        case checkBoxButton:
+        case checklistButton:
             loggedMethod = loggingMethod.checklist
             break
         case emojiButton:
@@ -81,9 +105,7 @@ class AddSymptomController: UIViewController {
         }
     }
     
-    
     @IBAction func saveAlert() {
-        
         let name = nameTextField.text!
         let calendarIcon = calendarIconTextField.text!
         
@@ -98,6 +120,5 @@ class AddSymptomController: UIViewController {
 
         let settingsController = storyboard?.instantiateViewController(withIdentifier: "SettingsController") as! SettingsController
         self.present(settingsController, animated:false, completion:nil)
-        
     }
 }

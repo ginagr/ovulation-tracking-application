@@ -44,9 +44,6 @@ class AddAlertController: UIViewController {
         setupTheme(currView: self)
         dailySwitch.isOn = false
         
-//        scrollView.isScrollEnabled = true
-//        scrollView.contentSize.height = UIScreen.main.bounds.height
-        
         alerts = [alarmOne, alarmTwo, alarmThree, alarmFour, alarmFive]
         alerts.append(alarmOne)
         alerts.append(alarmTwo)
@@ -62,9 +59,6 @@ class AddAlertController: UIViewController {
         weekdayButtons.append(fridayButton)
         weekdayButtons.append(saturdayButton)
 
-//        for index in 0...Int(stepper.value-1) {
-//            alerts[index].isHidden = false
-//        }
         alerts[0].isHidden = false
         for index in 1...4 {
             alerts[index].isHidden = true
@@ -72,29 +66,7 @@ class AddAlertController: UIViewController {
         
         //populate if from edit
         if alert != nil {
-            nameField.text = alert.name
-            titleField.text = alert.title
-            bodyField.text = alert.body
-            dailySwitch.isOn = alert.everyday
-            for (index, element) in alert.weekdays.enumerated() {
-                weekdayButtons[index].isSelected = element
-            }
-            if alert.everyday {
-                 for (index, _) in alert.weekdays.enumerated() {
-                    weekdayButtons[index].isSelected = true
-                    weekdayButtons[index].isEnabled = false
-                }
-            }
-            stepper.value = Double(alert.times.count)
-            stepperValue.text = String(alert.times.count)
-            for index in 0...alert.times.count-1 {
-                alerts[index].isHidden = false
-                for case let textField as UITextField in alerts[index].subviews {
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "hh:mm a"
-                    textField.text = dateFormatter.string(from: alert.times[index])
-                }
-            }
+            populate()
         }
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
@@ -243,6 +215,32 @@ class AddAlertController: UIViewController {
         let alertsController = storyboard?.instantiateViewController(withIdentifier: "AlertsController") as! AlertsController
         self.present(alertsController, animated:false, completion:nil)
         
+    }
+    
+    func populate() {
+        nameField.text = alert.name
+        titleField.text = alert.title
+        bodyField.text = alert.body
+        dailySwitch.isOn = alert.everyday
+        for (index, element) in alert.weekdays.enumerated() {
+            weekdayButtons[index].isSelected = element
+        }
+        if alert.everyday {
+            for (index, _) in alert.weekdays.enumerated() {
+                weekdayButtons[index].isSelected = true
+                weekdayButtons[index].isEnabled = false
+            }
+        }
+        stepper.value = Double(alert.times.count)
+        stepperValue.text = String(alert.times.count)
+        for index in 0...alert.times.count-1 {
+            alerts[index].isHidden = false
+            for case let textField as UITextField in alerts[index].subviews {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "hh:mm a"
+                textField.text = dateFormatter.string(from: alert.times[index])
+            }
+        }
     }
 }
 

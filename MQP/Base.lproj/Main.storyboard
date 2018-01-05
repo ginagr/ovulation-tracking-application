@@ -693,7 +693,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Bcs-oX-ANI">
-                                <rect key="frame" x="16" y="196" width="145" height="162"/>
+                                <rect key="frame" x="16" y="196" width="141" height="162"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xlZ-H6-ctE">
@@ -734,10 +734,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nUL-2j-yZf">
-                                        <rect key="frame" x="50" y="0.0" width="95" height="162"/>
+                                        <rect key="frame" x="50" y="0.0" width="91" height="162"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qe-CJ-xYe">
-                                                <rect key="frame" x="0.0" y="0.0" width="95" height="33"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="91" height="33"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="YES/NO">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -747,7 +747,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xhy-qd-f7K">
-                                                <rect key="frame" x="0.0" y="43" width="95" height="33"/>
+                                                <rect key="frame" x="0.0" y="43" width="91" height="33"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="RADIO">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -757,9 +757,9 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AuK-EJ-uqd">
-                                                <rect key="frame" x="0.0" y="86" width="95" height="33"/>
+                                                <rect key="frame" x="0.0" y="86" width="91" height="33"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <state key="normal" title="CHECK BOX">
+                                                <state key="normal" title="CHECKLIST">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
@@ -767,7 +767,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xf-qY-bkl">
-                                                <rect key="frame" x="0.0" y="129" width="95" height="33"/>
+                                                <rect key="frame" x="0.0" y="129" width="91" height="33"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="EMOJI">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -801,7 +801,7 @@
                     <connections>
                         <outlet property="binaryButton" destination="PFS-C9-1OK" id="sqT-pX-QNM"/>
                         <outlet property="calendarIconTextField" destination="u8I-f4-Nnt" id="FX8-Eu-67m"/>
-                        <outlet property="checkBoxButton" destination="gPt-GS-XXv" id="g6c-ss-xEn"/>
+                        <outlet property="checklistButton" destination="gPt-GS-XXv" id="g6c-ss-xEn"/>
                         <outlet property="emojiButton" destination="aRX-5D-ho9" id="zhH-mc-Nc8"/>
                         <outlet property="nameTextField" destination="L04-Mk-CaQ" id="Cpz-eL-eEu"/>
                         <outlet property="radioButton" destination="Yld-Ac-pX6" id="yTK-x5-aMP"/>
@@ -861,7 +861,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3iy-eu-b05"/>
+        <segue reference="7jz-Kn-tfZ"/>
         <segue reference="BcV-wX-Rrd"/>
         <segue reference="0Ya-3O-JRK"/>
     </inferredMetricsTieBreakers>
