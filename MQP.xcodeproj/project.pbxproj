@@ -18,6 +18,7 @@
 		3329419C1FEB9ADD0022B196 /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3329419B1FEB9ADC0022B196 /* CalendarController.swift */; };
 		3329419E1FEB9AEC0022B196 /* AlertsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3329419D1FEB9AEC0022B196 /* AlertsController.swift */; };
 		332941A01FEC5C020022B196 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3329419F1FEC5C020022B196 /* ColorPickerViewController.swift */; };
+		33CBB1A620015CA800D53ECA /* AddSymptomLoggingMethodController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CBB1A520015CA800D53ECA /* AddSymptomLoggingMethodController.swift */; };
 		33EBE4D01FEC6AA1001D18AD /* Colors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 33EBE4CF1FEC6AA1001D18AD /* Colors.plist */; };
 		33EBE4D21FEC7566001D18AD /* MasterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EBE4D11FEC7566001D18AD /* MasterController.swift */; };
 		33EBE4D41FEDCDEB001D18AD /* AddAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EBE4D31FEDCDEB001D18AD /* AddAlertController.swift */; };
@@ -55,6 +56,7 @@
 		3329419B1FEB9ADC0022B196 /* CalendarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarController.swift; sourceTree = "<group>"; };
 		3329419D1FEB9AEC0022B196 /* AlertsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsController.swift; sourceTree = "<group>"; };
 		3329419F1FEC5C020022B196 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
+		33CBB1A520015CA800D53ECA /* AddSymptomLoggingMethodController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSymptomLoggingMethodController.swift; sourceTree = "<group>"; };
 		33EBE4CF1FEC6AA1001D18AD /* Colors.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Colors.plist; sourceTree = "<group>"; };
 		33EBE4D11FEC7566001D18AD /* MasterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterController.swift; sourceTree = "<group>"; };
 		33EBE4D31FEDCDEB001D18AD /* AddAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlertController.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				33EBE4EE1FF483F6001D18AD /* SymptomList.swift */,
 				33EBE4F01FF4841A001D18AD /* SymptomItem.swift */,
 				33EBE4F41FF48856001D18AD /* AddSymptomController.swift */,
+				33CBB1A520015CA800D53ECA /* AddSymptomLoggingMethodController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 			files = (
 				33EBE4F11FF4841A001D18AD /* SymptomItem.swift in Sources */,
 				3329419A1FEB9ACD0022B196 /* SettingsController.swift in Sources */,
+				33CBB1A620015CA800D53ECA /* AddSymptomLoggingMethodController.swift in Sources */,
 				33EBE4D21FEC7566001D18AD /* MasterController.swift in Sources */,
 				3329417A1FEB88E30022B196 /* MainController.swift in Sources */,
 				33EBE4F31FF484EE001D18AD /* Enums.swift in Sources */,

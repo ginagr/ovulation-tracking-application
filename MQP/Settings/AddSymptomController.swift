@@ -15,15 +15,16 @@ class AddSymptomController: UIViewController {
     @IBOutlet weak var radioButton: UIButton!
     @IBOutlet weak var checklistButton: UIButton!
     @IBOutlet weak var emojiButton: UIButton!
-    @IBOutlet weak var calendarIconTextField: UITextField!
+    @IBOutlet weak var nextButton: UIButton!
     
     var loggingButtons = [UIButton] ()
-    var loggedMethod = loggingMethod.binary
+    var loggedMethod = LoggingMethod.binary
     
     var symptom : SymptomItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTheme(currView: self)
         
         loggingButtons.append(binaryButton)
         loggingButtons.append(radioButton)
@@ -33,7 +34,7 @@ class AddSymptomController: UIViewController {
         if symptom != nil {
             populate()
         }
-        
+
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
     }
@@ -42,25 +43,24 @@ class AddSymptomController: UIViewController {
         nameTextField.text = symptom.name
         let enumlm = getLoggingMethodEnum(enumString: symptom.loggingMethod)
         switch enumlm {
-        case loggingMethod.binary:
+        case LoggingMethod.binary:
             loggingMethodChosen(binaryButton)
             break
-        case loggingMethod.checklist:
+        case LoggingMethod.checklist:
             loggingMethodChosen(checklistButton)
             break
-        case loggingMethod.emoji:
+        case LoggingMethod.emoji:
             loggingMethodChosen(emojiButton)
+            nextButton.setTitle("SAVE", for: .normal)
             break
-        case loggingMethod.radio:
+        case LoggingMethod.radio:
             loggingMethodChosen(radioButton)
             break
         }
-        calendarIconTextField.text = symptom.calendarIcon
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
-        nameTextField.resignFirstResponder()
-        calendarIconTextField.resignFirstResponder()
+       nameTextField.resignFirstResponder()
     }
 
     @IBAction func loggingTextChosen(_ sender: UIButton) {
@@ -86,39 +86,48 @@ class AddSymptomController: UIViewController {
     @IBAction func loggingMethodChosen(_ sender: UIButton) {
         loggingButtons.forEach { $0.isSelected = false } // uncheck everything
         sender.isSelected = true // check the button that is clicked on
+        nextButton.setTitle("NEXT", for: .normal)
         switch sender {
         case binaryButton:
-            loggedMethod = loggingMethod.binary
+            loggedMethod = LoggingMethod.binary
             break
         case radioButton:
-            loggedMethod = loggingMethod.radio
+            loggedMethod = LoggingMethod.radio
             break
         case checklistButton:
-            loggedMethod = loggingMethod.checklist
+            loggedMethod = LoggingMethod.checklist
             break
         case emojiButton:
-            loggedMethod = loggingMethod.emoji
+            loggedMethod = LoggingMethod.emoji
+             nextButton.setTitle("SAVE", for: .normal)
             break
         default:
-            loggedMethod = loggingMethod.binary
+            loggedMethod = LoggingMethod.binary
             break
         }
     }
     
-    @IBAction func saveAlert() {
+    @IBAction func nextButton(_ sender: UIButton) {
         let name = nameTextField.text!
-        let calendarIcon = calendarIconTextField.text!
         
-        let symptomItem = SymptomItem(name: name, loggingMethod: getLoggingMethodEnum(string: loggedMethod), calendarIcon: calendarIcon, UUID: UUID().uuidString)
-        
-        if symptom != nil {
-            SymptomList.sharedInstance.removeItem(symptom)
-            SymptomList.sharedInstance.addItem(symptomItem)
+        if loggedMethod == LoggingMethod.emoji {
+            let symptomItem = SymptomItem(name: name, loggingMethod: getLoggingMethodEnum(string: loggedMethod), loggingNames: [], calendarIcons: [], UUID: UUID().uuidString)
+            
+            if symptom != nil {
+                SymptomList.sharedInstance.removeItem(symptom)
+                SymptomList.sharedInstance.addItem(symptomItem)
+            } else {
+                SymptomList.sharedInstance.addItem(symptomItem)
+            }
+            
+            let controller = storyboard?.instantiateViewController(withIdentifier: "SettingsController") as! SettingsController
+            self.present(controller, animated:false, completion:nil)
         } else {
-           SymptomList.sharedInstance.addItem(symptomItem)
+        
+            let controller = storyboard?.instantiateViewController(withIdentifier: "AddSymptomLoggingMethodController") as! AddSymptomLoggingMethodController
+            controller.name = name
+            controller.loggingMethod = loggedMethod
+            self.present(controller, animated:false, completion:nil)
         }
-
-        let settingsController = storyboard?.instantiateViewController(withIdentifier: "SettingsController") as! SettingsController
-        self.present(settingsController, animated:false, completion:nil)
     }
 }

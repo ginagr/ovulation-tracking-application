@@ -8,14 +8,14 @@
 
 import Foundation
 
-enum loggingMethod {
+enum LoggingMethod {
     case binary //yes/no
     case checklist
     case radio
     case emoji
 }
 
-func getLoggingMethodEnum(string: loggingMethod) -> String {
+func getLoggingMethodEnum(string: LoggingMethod) -> String {
     switch string {
     case .binary:
         return "binary"
@@ -28,7 +28,7 @@ func getLoggingMethodEnum(string: loggingMethod) -> String {
     }
 }
 
-func getLoggingMethodEnum(enumString: String) -> loggingMethod {
+func getLoggingMethodEnum(enumString: String) -> LoggingMethod {
     switch enumString {
     case "binary":
         return .binary

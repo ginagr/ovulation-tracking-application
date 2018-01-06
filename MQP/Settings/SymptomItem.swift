@@ -11,13 +11,15 @@ struct SymptomItem {
     
     var name: String
     var loggingMethod: String
-    var calendarIcon: String
+    var loggingNames = [String] ()
+    var calendarIcons = [String] ()
     var UUID: String
     
-    init(name: String, loggingMethod: String, calendarIcon: String, UUID: String) {
+    init(name: String, loggingMethod: String, loggingNames: [String], calendarIcons: [String], UUID: String) {
         self.name = name
         self.loggingMethod = loggingMethod
-        self.calendarIcon = calendarIcon
+        self.loggingNames = loggingNames
+        self.calendarIcons = calendarIcons
         self.UUID = UUID
     }
 }

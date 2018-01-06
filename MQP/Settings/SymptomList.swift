@@ -24,7 +24,7 @@ class SymptomList {
         let items = Array(symptomDictionary.values)
         return items.map({
             let item = $0 as! [String:AnyObject]
-            return SymptomItem(name: item["name"] as! String, loggingMethod: item["loggingMethod"] as! String, calendarIcon: item["calendarIcon"] as! String, UUID: item["UUID"] as! String!)
+            return SymptomItem(name: item["name"] as! String, loggingMethod: item["loggingMethod"] as! String, loggingNames: item["loggingNames"] as! [String], calendarIcons: item["calendarIcons"] as! [String], UUID: item["UUID"] as! String!)
         }).sorted(by: {(left: SymptomItem, right:SymptomItem) -> Bool in
             (left.name.compare(right.name) == .orderedAscending)
         })
@@ -33,7 +33,7 @@ class SymptomList {
     func addItem(_ item: SymptomItem) {
         // persist a representation of this symptom item in NSUserDefaults
         var symptomDictionary = UserDefaults.standard.dictionary(forKey: ITEMS_KEY) ?? Dictionary()
-        symptomDictionary[item.UUID] = ["name": item.name, "loggingMethod": item.loggingMethod, "calendarIcon": item.calendarIcon, "UUID": item.UUID]
+        symptomDictionary[item.UUID] = ["name": item.name, "loggingMethod": item.loggingMethod, "loggingNames": item.loggingNames, "calendarIcons": item.calendarIcons, "UUID": item.UUID]
         UserDefaults.standard.set(symptomDictionary, forKey: ITEMS_KEY)
     }
     
