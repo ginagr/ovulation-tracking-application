@@ -125,6 +125,9 @@ class AddSymptomController: UIViewController {
         } else {
         
             let controller = storyboard?.instantiateViewController(withIdentifier: "AddSymptomLoggingMethodController") as! AddSymptomLoggingMethodController
+            if symptom != nil {
+                controller.symptom = symptom
+            }
             controller.name = name
             controller.loggingMethod = loggedMethod
             self.present(controller, animated:false, completion:nil)

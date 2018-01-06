@@ -14,6 +14,9 @@ class AddSymptomLoggingMethodController: UIViewController {
     @IBOutlet weak var numberOptionLabel: UILabel!
     @IBOutlet weak var stepperLabel: UILabel!
     @IBOutlet weak var stepper: UIStepper!
+    @IBOutlet weak var optionLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var iconLabel: UILabel!
     @IBOutlet weak var optionOneName: UITextField!
     @IBOutlet weak var optionTwoName: UITextField!
     @IBOutlet weak var optionThreeName: UITextField!
@@ -36,6 +39,7 @@ class AddSymptomLoggingMethodController: UIViewController {
     
     var name: String!
     var loggingMethod: LoggingMethod!
+    var symptom: SymptomItem!
     
     var fromPrevious = false
     
@@ -55,6 +59,12 @@ class AddSymptomLoggingMethodController: UIViewController {
         optionLabels = [optionOneLabel, optionTwoLabel, optionThreeLabel, optionFourLabel, optionFiveLabel]
         
         if loggingMethod == .binary {
+            numberOptionLabel.isHidden = true
+            stepperLabel.isHidden = true
+            stepper.isHidden = true
+            optionLabel.isHidden = true
+            nameLabel.isHidden = true
+            iconLabel.isHidden = true
             for index in 0...4 {
                 optionNames[index].isHidden = true
                 optionIcons[index].isHidden = true
@@ -71,6 +81,20 @@ class AddSymptomLoggingMethodController: UIViewController {
                 }
             }
         }
+        
+        if symptom != nil {
+            if getLoggingMethodEnum(enumString: symptom.loggingMethod) == .binary {
+                calendarIcon.text = symptom.calendarIcons[0]
+            } else {
+                for index in 0...symptom.loggingNames.count-1 {
+                    optionNames[index].text = symptom.loggingNames[index]
+                    optionIcons[index].text = symptom.calendarIcons[index]
+                    optionNames[index].isHidden = false
+                    optionIcons[index].isHidden = false
+                    optionLabels[index].isHidden = false
+                }
+            }
+        }
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
@@ -81,19 +105,57 @@ class AddSymptomLoggingMethodController: UIViewController {
         calendarIcon.resignFirstResponder()
     }
     
+    @IBAction func stepperAction(_ sender: Any) {
+        if (Int(stepperLabel.text!))! < Int(stepper.value) {
+            stepperLabel.text = "\(Int(stepper.value))"
+            unhideOption()
+        } else {
+            stepperLabel.text = "\(Int(stepper.value))"
+            hideOption()
+        }
+    }
+    
+    func unhideOption() {
+        optionNames[Int(stepper.value-1)].isHidden = false
+        optionIcons[Int(stepper.value-1)].isHidden = false
+        optionLabels[Int(stepper.value-1)].isHidden = false
+    }
+    
+    func hideOption() {
+        optionNames[Int(stepper.value)].isHidden = true
+        optionIcons[Int(stepper.value)].isHidden = true
+        optionLabels[Int(stepper.value)].isHidden = true
+    }
+    
     @IBAction func saveAlert() {
-//        let name = symptom.name
-//        let calendarIcon = calendarIconTextField.text!
-        
-//        let symptomItem = SymptomItem(name: name, loggingMethod: symptom.loggingMethod, loggingNames: calendarIcon: calendarIcons, UUID: UUID().uuidString)
-        
-//        if symptom != nil {
-//            SymptomList.sharedInstance.removeItem(symptom)
-//            SymptomList.sharedInstance.addItem(symptomItem)
-//        } else {
-//            SymptomList.sharedInstance.addItem(symptomItem)
-//        }
-//
+       
+        if loggingMethod == .binary {
+            let calendarIcons = calendarIcon.text!
+            let symptomItem = SymptomItem(name: name, loggingMethod: getLoggingMethodEnum(string: loggingMethod), loggingNames: [], calendarIcons: [calendarIcons], UUID: UUID().uuidString)
+            
+            if symptom != nil {
+                SymptomList.sharedInstance.removeItem(symptom)
+                SymptomList.sharedInstance.addItem(symptomItem)
+            } else {
+                SymptomList.sharedInstance.addItem(symptomItem)
+            }
+        } else {
+            var calendarIcons = [String] ()
+            var loggingNames = [String] ()
+            for index in 0...Int(stepper.value)-1 {
+                calendarIcons.append(optionIcons[index].text!)
+                loggingNames.append(optionNames[index].text!)
+            }
+            let symptomItem = SymptomItem(name: name, loggingMethod: getLoggingMethodEnum(string: loggingMethod), loggingNames: loggingNames, calendarIcons: calendarIcons, UUID: UUID().uuidString)
+            
+            if symptom != nil {
+                SymptomList.sharedInstance.removeItem(symptom)
+                SymptomList.sharedInstance.addItem(symptomItem)
+            } else {
+                SymptomList.sharedInstance.addItem(symptomItem)
+            }
+        }
+
         let settingsController = storyboard?.instantiateViewController(withIdentifier: "SettingsController") as! SettingsController
         self.present(settingsController, animated:false, completion:nil)
     }
