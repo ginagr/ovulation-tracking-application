@@ -4,7 +4,7 @@
 
 ## Synopsis
 
-[[https://github.com/ginagr/ovulation-tracking-application/blob/master/app_outline.png]]
+![app outline](https://github.com/ginagr/ovulation-tracking-application/blob/master/app_outline.png)
 
 This is an iOS prototype appliaction built with Xcode. The language used is Swift 4. 
 There is a basic prototype for the main screen, the alerts screen and the settings screen.
