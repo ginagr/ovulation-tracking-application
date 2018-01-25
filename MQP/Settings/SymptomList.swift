@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class SymptomList {
     class var sharedInstance : SymptomList {
         struct Static {

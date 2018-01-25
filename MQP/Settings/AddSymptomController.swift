@@ -34,7 +34,7 @@ class AddSymptomController: UIViewController {
         if symptom != nil {
             populate()
         }
-
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
     }
@@ -60,21 +60,21 @@ class AddSymptomController: UIViewController {
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
-       nameTextField.resignFirstResponder()
+        nameTextField.resignFirstResponder()
     }
-
+    
     @IBAction func loggingTextChosen(_ sender: UIButton) {
         switch sender.currentTitle! {
-        case "YES/NO":
+        case "Yes/No":
             loggingMethodChosen(binaryButton)
             break
-        case "RADIO":
+        case "Radio":
             loggingMethodChosen(radioButton)
             break
-        case "CHECKLIST":
+        case "Checklist":
             loggingMethodChosen(checklistButton)
             break
-        case "EMOJI":
+        case "Emoji":
             loggingMethodChosen(emojiButton)
             break
         default :
@@ -86,7 +86,7 @@ class AddSymptomController: UIViewController {
     @IBAction func loggingMethodChosen(_ sender: UIButton) {
         loggingButtons.forEach { $0.isSelected = false } // uncheck everything
         sender.isSelected = true // check the button that is clicked on
-        nextButton.setTitle("NEXT", for: .normal)
+        nextButton.setTitle("Next", for: .normal)
         switch sender {
         case binaryButton:
             loggedMethod = LoggingMethod.binary
@@ -99,7 +99,7 @@ class AddSymptomController: UIViewController {
             break
         case emojiButton:
             loggedMethod = LoggingMethod.emoji
-             nextButton.setTitle("SAVE", for: .normal)
+            nextButton.setTitle("Save", for: .normal)
             break
         default:
             loggedMethod = LoggingMethod.binary
@@ -123,7 +123,7 @@ class AddSymptomController: UIViewController {
             let controller = storyboard?.instantiateViewController(withIdentifier: "SettingsController") as! SettingsController
             self.present(controller, animated:false, completion:nil)
         } else {
-        
+            
             let controller = storyboard?.instantiateViewController(withIdentifier: "AddSymptomLoggingMethodController") as! AddSymptomLoggingMethodController
             if symptom != nil {
                 controller.symptom = symptom

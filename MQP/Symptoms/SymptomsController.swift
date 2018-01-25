@@ -10,6 +10,8 @@ import UIKit
 
 class SymptomsController: UIViewController {
     
+    @IBOutlet weak var symptomTable: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTheme(currView: self)

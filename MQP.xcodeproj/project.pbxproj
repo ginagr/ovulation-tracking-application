@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3319CC952002E72A003578C2 /* DayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3319CC942002E72A003578C2 /* DayItem.swift */; };
+		3319CC982002E7D3003578C2 /* DayList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3319CC972002E7D3003578C2 /* DayList.swift */; };
 		332941781FEB88E30022B196 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332941771FEB88E30022B196 /* AppDelegate.swift */; };
 		3329417A1FEB88E30022B196 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332941791FEB88E30022B196 /* MainController.swift */; };
 		3329417D1FEB88E30022B196 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3329417B1FEB88E30022B196 /* Main.storyboard */; };
@@ -41,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3319CC942002E72A003578C2 /* DayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayItem.swift; sourceTree = "<group>"; };
+		3319CC972002E7D3003578C2 /* DayList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayList.swift; sourceTree = "<group>"; };
 		332941741FEB88E30022B196 /* MQP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MQP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		332941771FEB88E30022B196 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		332941791FEB88E30022B196 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
@@ -86,6 +90,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3319CC932002E706003578C2 /* Days */ = {
+			isa = PBXGroup;
+			children = (
+				3319CC942002E72A003578C2 /* DayItem.swift */,
+				3319CC972002E7D3003578C2 /* DayList.swift */,
+			);
+			path = Days;
+			sourceTree = "<group>";
+		};
 		3329416B1FEB88E30022B196 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +120,7 @@
 		332941761FEB88E30022B196 /* MQP */ = {
 			isa = PBXGroup;
 			children = (
+				3319CC932002E706003578C2 /* Days */,
 				33EBE4E71FF1CA5C001D18AD /* Master */,
 				33EBE4E61FF1CA4A001D18AD /* Other */,
 				33EBE4E51FF0CE8F001D18AD /* Main */,
@@ -301,7 +315,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3319CC952002E72A003578C2 /* DayItem.swift in Sources */,
 				33EBE4F11FF4841A001D18AD /* SymptomItem.swift in Sources */,
+				3319CC982002E7D3003578C2 /* DayList.swift in Sources */,
 				3329419A1FEB9ACD0022B196 /* SettingsController.swift in Sources */,
 				33CBB1A620015CA800D53ECA /* AddSymptomLoggingMethodController.swift in Sources */,
 				33EBE4D21FEC7566001D18AD /* MasterController.swift in Sources */,
